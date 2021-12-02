@@ -26,17 +26,17 @@
     </target>
 
     <target name="jar" depends="compile" description="generate the jar">
-        <jar jarfile="${resources}/IBController.jar" basedir="${target}/classes"/>
+        <jar jarfile="${target}/IBController/IBController.jar" basedir="${target}/classes"/>
     </target>
 
     <target name="dist" depends="jar" description="generate the distribution zip">
-        <echo file="${resources}/version" append="false" message="${ver}"/>
+        <echo file="${target}/IBController/version" append="false" message="${ver}"/>
         <copy todir="${target}/IBController" preservelastmodified="true">
             <fileset file="LICENSE.txt"/>
             <fileset dir="${resources}">
-	        <exclude name="IBControllerService/**"/>
-	    </fileset>
-	</copy>
+	            <exclude name="IBControllerService/**"/>
+	        </fileset>
+	    </copy>
         <zip destfile="${dist}/IBController-${ver}.zip" basedir="${target}/IBController" includes="**"/>
     </target>
 </project>
