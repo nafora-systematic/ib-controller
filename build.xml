@@ -5,6 +5,10 @@
     <property name="ver" value="4.0.0"/>
     <property name="src" location="src"/>
     <property name="resources" location="resources"/>
+    <property name="resources-linux" location="resources-linux"/>
+    <property name="resources-min" location="resources-min"/>
+    <property name="resources-windows" location="resources-windows"/>
+    <property name="resources-osx" location="resources-osx"/>
     <property name="target" location="target"/>
     <property name="dist"  location="dist"/>
 
@@ -36,9 +40,25 @@
         <zip destfile="${dist}/IBController-${ver}-all.zip">
             <fileset file="${target}/IBController/IBController.jar"/>
             <fileset file="LICENSE.txt"/>
-            <fileset dir="${resources}">
+            <fileset dir="${resources}"/>
+            <fileset dir="${resources-windows}">
                 <exclude name="IBControllerService/**"/>
             </fileset>
+            <fileset dir="${resources-osx}"/>
+        </zip>
+        <zip destfile="${dist}/IBController-${ver}-linux.zip">
+            <fileset file="${target}/IBController/IBController.jar"/>
+            <fileset file="LICENSE.txt"/>
+            <fileset dir="${resources}"/>
+        </zip>
+        <zip destfile="${dist}/IBController-${ver}-linux-min.zip">
+            <fileset file="${target}/IBController/IBController.jar"/>
+            <fileset file="LICENSE.txt"/>
+            <fileset dir="${resources}">
+                <exclude name="IBController.ini"/>
+                <exclude name="userguide.pdf"/>
+            </fileset>
+            <fileset dir="${resources-min}"/>
         </zip>
     </target>
 </project>
